@@ -4,9 +4,9 @@
 
 import sys
 
-# Perform one step of the Analytical Engine addition
-# operation. a and b are the digits being added, c is the
-# carry
+# Perform one step of the Analytical Engine addition operation.
+# a and b are the digits being added,
+# c is the carry
 def increment_adder(a, b, c):
     a = a - 1        # Decrement addend
     b = (b + 1) % 10 # Increment accum, wrap to 0 if necessary
@@ -22,8 +22,7 @@ def add_digits(digit1, digit2):
     carry = 0
     
     while digit1 > 0:
-        [digit1, digit2, carry] = increment_adder(
-        digit1, digit2, carry)
+        [digit1, digit2, carry] = increment_adder(digit1, digit2, carry)
 
     return digit2, carry
-    
+
