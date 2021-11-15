@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.110 (w)1999-2020 BSI
+[*] Mon Nov 15 19:57:05 2021
+[*]
+[dumpfile] "Ex__6_adder4_fulltestbench.ghw"
+[dumpfile_mtime] "Mon Nov 15 19:50:40 2021"
+[dumpfile_size] 10167
+[savefile] "Ex__6_adder4_fulltestbench.gtkw"
+[timestart] 0
+[size] 1884 2096
+[pos] -51 -51
+*-28.418583 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.adder4_testbench.
+[sst_width] 233
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 663
+@22
+#{top.adder4_testbench.a[3:0]} top.adder4_testbench.a[3] top.adder4_testbench.a[2] top.adder4_testbench.a[1] top.adder4_testbench.a[0]
+#{top.adder4_testbench.b[3:0]} top.adder4_testbench.b[3] top.adder4_testbench.b[2] top.adder4_testbench.b[1] top.adder4_testbench.b[0]
+#{top.adder4_testbench.s[3:0]} top.adder4_testbench.s[3] top.adder4_testbench.s[2] top.adder4_testbench.s[1] top.adder4_testbench.s[0]
+@28
+top.adder4_testbench.c_out
+@22
+#{top.adder4_testbench.expected_sum5[4:0]} top.adder4_testbench.expected_sum5[4] top.adder4_testbench.expected_sum5[3] top.adder4_testbench.expected_sum5[2] top.adder4_testbench.expected_sum5[1] top.adder4_testbench.expected_sum5[0]
+#{top.adder4_testbench.expected_sum4[3:0]} top.adder4_testbench.expected_sum4[3] top.adder4_testbench.expected_sum4[2] top.adder4_testbench.expected_sum4[1] top.adder4_testbench.expected_sum4[0]
+@28
+top.adder4_testbench.expected_c
+top.adder4_testbench.error
+[pattern_trace] 1
+[pattern_trace] 0

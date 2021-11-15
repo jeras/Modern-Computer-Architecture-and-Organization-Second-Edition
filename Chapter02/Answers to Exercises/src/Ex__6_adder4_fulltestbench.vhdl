@@ -17,15 +17,13 @@ architecture BEHAVIORAL of ADDER4_TESTBENCH is
     );
   end component;
 
-  signal a             : std_logic_vector(3 downto 0);
-  signal b             : std_logic_vector(3 downto 0);
-  signal s             : std_logic_vector(3 downto 0);
-  signal c_out         : std_logic;
+  signal a        : std_logic_vector(3 downto 0);
+  signal b        : std_logic_vector(3 downto 0);
+  signal s        : std_logic_vector(3 downto 0);
+  signal c_out    : std_logic;
 
-  signal expected_sum5 : unsigned(4 downto 0);
-  signal expected_sum4 : unsigned(3 downto 0);
-  signal expected_c    : std_logic;
-  signal error         : std_logic;
+  signal expected : unsigned(4 downto 0);
+  signal error    : std_logic;
 
 begin
 
@@ -49,17 +47,11 @@ begin
         wait for 1 ns;
 
         -- Compute the 5-bit sum of the two 4-bit values
-        expected_sum5 <= unsigned('0' & a) + unsigned('0' & b);
-        wait for 1 ns;
-
-        -- Break the sum into a 4-bit output and a carry bit
-        expected_sum4 <= expected_sum5(3 downto 0);
-        expected_c    <= expected_sum5(4);
+        expected <= unsigned('0' & a) + unsigned('0' & b);
         wait for 1 ns;
 
         -- The 'error' signal will only go to 1 if an error occurs
-        if ((unsigned(s) = unsigned(expected_sum4)) and
-            (c_out = expected_c)) then
+	if unsigned(c_out & s) = unsigned(expected) then
           error <= '0';
         else
           error <= '1';

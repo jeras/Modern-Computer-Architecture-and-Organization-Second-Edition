@@ -1,0 +1,26 @@
+[*]
+[*] GTKWave Analyzer v3.3.110 (w)1999-2020 BSI
+[*] Mon Nov 15 19:44:32 2021
+[*]
+[dumpfile] "/home/ijeras/Documents/bookreview/Modern-Computer-Architecture-and-Organization-Second-Edition/Chapter02/Answers to Exercises/src/Ex__5_adder4_testbench.ghw"
+[dumpfile_mtime] "Mon Nov 15 19:41:08 2021"
+[dumpfile_size] 773
+[savefile] "/home/ijeras/Documents/bookreview/Modern-Computer-Architecture-and-Organization-Second-Edition/Chapter02/Answers to Exercises/src/Ex__5_adder4_testbench.gtkw"
+[timestart] 0
+[size] 1624 1836
+[pos] -1 -1
+*-23.004961 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.adder4_testbench.
+[sst_width] 233
+[signals_width] 153
+[sst_expanded] 1
+[sst_vpaned_height] 572
+@22
+#{top.adder4_testbench.a[3:0]} top.adder4_testbench.a[3] top.adder4_testbench.a[2] top.adder4_testbench.a[1] top.adder4_testbench.a[0]
+#{top.adder4_testbench.b[3:0]} top.adder4_testbench.b[3] top.adder4_testbench.b[2] top.adder4_testbench.b[1] top.adder4_testbench.b[0]
+#{top.adder4_testbench.s[3:0]} top.adder4_testbench.s[3] top.adder4_testbench.s[2] top.adder4_testbench.s[1] top.adder4_testbench.s[0]
+@28
+top.adder4_testbench.c_out
+[pattern_trace] 1
+[pattern_trace] 0
