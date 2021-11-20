@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.110 (w)1999-2020 BSI
+[*] Sat Nov 20 21:57:47 2021
+[*]
+[dumpfile] "ALU_testbench.ghw"
+[dumpfile_mtime] "Sat Nov 20 21:57:37 2021"
+[dumpfile_size] 812
+[savefile] "ALU_testbench.gtkw"
+[timestart] 0
+[size] 1000 923
+[pos] 438 14
+*-23.670940 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.alu_testbench.
+[sst_width] 233
+[signals_width] 118
+[sst_expanded] 1
+[sst_vpaned_height] 254
+@22
+#{top.alu_testbench.opcode[3:0]} top.alu_testbench.opcode[3] top.alu_testbench.opcode[2] top.alu_testbench.opcode[1] top.alu_testbench.opcode[0]
+@29
+top.alu_testbench.c_in
+@22
+#{top.alu_testbench.left[7:0]} top.alu_testbench.left[7] top.alu_testbench.left[6] top.alu_testbench.left[5] top.alu_testbench.left[4] top.alu_testbench.left[3] top.alu_testbench.left[2] top.alu_testbench.left[1] top.alu_testbench.left[0]
+#{top.alu_testbench.right[7:0]} top.alu_testbench.right[7] top.alu_testbench.right[6] top.alu_testbench.right[5] top.alu_testbench.right[4] top.alu_testbench.right[3] top.alu_testbench.right[2] top.alu_testbench.right[1] top.alu_testbench.right[0]
+#{top.alu_testbench.result[7:0]} top.alu_testbench.result[7] top.alu_testbench.result[6] top.alu_testbench.result[5] top.alu_testbench.result[4] top.alu_testbench.result[3] top.alu_testbench.result[2] top.alu_testbench.result[1] top.alu_testbench.result[0]
+@28
+top.alu_testbench.c_out
+top.alu_testbench.n_out
+top.alu_testbench.v_out
+top.alu_testbench.z_out
+[pattern_trace] 1
+[pattern_trace] 0
