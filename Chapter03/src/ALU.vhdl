@@ -9,24 +9,15 @@ library IEEE;
 
 entity ALU is
   port (
-    -- Left operand
-    LEFT        : in    std_logic_vector(7 downto 0);
-    -- Right operand
-    RIGHT       : in    std_logic_vector(7 downto 0);
-    -- ALU operation
-    OPCODE      : in    std_logic_vector(3 downto 0);
-    -- Carry input
-    C_IN        : in    std_logic;
-    -- ALU output
-    RESULT      : out   std_logic_vector(7 downto 0);
-    -- Carry output
-    C_OUT       : out   std_logic;
-    -- Negative flag output
-    N_OUT       : out   std_logic;                    
-    -- Overflow flag output
-    V_OUT       : out   std_logic;                    
-    -- Zero flag output
-    Z_OUT       : out   std_logic                     
+    LEFT        : in  std_logic_vector(7 downto 0);  -- Left operand
+    RIGHT       : in  std_logic_vector(7 downto 0);  -- Right operand
+    OPCODE      : in  std_logic_vector(3 downto 0);  -- ALU operation
+    C_IN        : in  std_logic;                     -- Carry input
+    RESULT      : out std_logic_vector(7 downto 0);  -- ALU output
+    C_OUT       : out std_logic;                     -- Carry output
+    N_OUT       : out std_logic;                     -- Negative flag output
+    V_OUT       : out std_logic;                     -- Overflow flag output
+    Z_OUT       : out std_logic                      -- Zero flag output
   );
 end entity ALU;
 
@@ -69,18 +60,12 @@ begin
           V_OUT <= '0';
         end if;
 
-      when "0010" =>                          -- Increment
-        result8 := unsigned(LEFT) + 1;
-      when "0011" =>                          -- Decrement
-        result8 := unsigned(LEFT) - 1;
-      when "0101" =>                          -- Bitwise AND
-        result8 := unsigned(LEFT and RIGHT);
-      when "0110" =>                          -- Bitwise OR
-        result8 := unsigned(LEFT or RIGHT);
-      when "0111" =>                          -- Bitwise XOR
-        result8 := unsigned(LEFT xor RIGHT);
-      when others =>
-        result8 := (others => 'X');
+      when "0010" => result8 := unsigned(LEFT) + 1;        -- Increment
+      when "0011" => result8 := unsigned(LEFT) - 1;        -- Decrement
+      when "0101" => result8 := unsigned(LEFT and RIGHT);  -- Bitwise AND
+      when "0110" => result8 := unsigned(LEFT or  RIGHT);  -- Bitwise OR
+      when "0111" => result8 := unsigned(LEFT xor RIGHT);  -- Bitwise XOR
+      when others => result8 := (others => 'X');           -- don't care
 
     end case;
 
