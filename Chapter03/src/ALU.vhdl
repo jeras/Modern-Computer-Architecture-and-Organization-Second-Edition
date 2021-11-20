@@ -49,16 +49,10 @@ begin
                    unsigned(right_op) +
                    unsigned(std_logic_vector'(""& C_IN));
         result8 := result9(7 downto 0);
-
-        C_OUT <= result9(8);               -- C flag
-
+	-- C flag
+        C_OUT <= result9(8);
         -- V flag
-        if (((LEFT(7) XOR result8(7)) = '1') AND
-            ((right_op(7) XOR result8(7)) = '1')) then
-          V_OUT <= '1';
-        else
-          V_OUT <= '0';
-        end if;
+        V_OUT <= (LEFT(7) XOR result8(7)) AND (right_op(7) XOR result8(7));
 
       when "0010" => result8 := unsigned(LEFT) + 1;        -- Increment
       when "0011" => result8 := unsigned(LEFT) - 1;        -- Decrement
