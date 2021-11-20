@@ -1,4 +1,3 @@
-Replace the code listing with this (there should be no broken lines):
 
 -- Load the standard libraries
 
