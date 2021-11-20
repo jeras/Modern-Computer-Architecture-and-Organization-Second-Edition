@@ -42,35 +42,31 @@ begin
 
     LEFT  <= std_logic_vector(to_signed(126, 8));
     RIGHT <= std_logic_vector(to_signed(  1, 8));
-    wait for 0 ns;  -- the necesity for this delta delay is probably a GHDL bug
-    wait for 0 ns;  -- in the first output line a single delta delay was not enough for GHDL to provide the right output
+    wait for 1 ns;
 
     report to_hstring(LEFT) & " + " & to_hstring(RIGHT) & " = " & to_hstring(C_OUT & RESULT) & ", V_OUT = " & std_logic'image(V_OUT);
-    wait for 10 ns;
+    wait for 9 ns;
 
     LEFT  <= std_logic_vector(to_signed(127, 8));
     RIGHT <= std_logic_vector(to_signed(  1, 8));
-    wait for 0 ns;  -- the necesity for this delta delay is probably a GHDL bug
-    wait for 0 ns;  -- in the first output line a single delta delay was not enough for GHDL to provide the right output
+    wait for 1 ns;
 
     report to_hstring(LEFT) & " + " & to_hstring(RIGHT) & " = " & to_hstring(C_OUT & RESULT) & ", V_OUT = " & std_logic'image(V_OUT);
-    wait for 10 ns;
+    wait for 9 ns;
 
     LEFT  <= std_logic_vector(to_signed(-127, 8));
     RIGHT <= std_logic_vector(to_signed(  -1, 8));
-    wait for 0 ns;  -- the necesity for this delta delay is probably a GHDL bug
-    wait for 0 ns;  -- in the first output line a single delta delay was not enough for GHDL to provide the right output
+    wait for 1 ns;
 
     report to_hstring(LEFT) & " + " & to_hstring(RIGHT) & " = " & to_hstring(C_OUT & RESULT) & ", V_OUT = " & std_logic'image(V_OUT);
-    wait for 10 ns;
+    wait for 9 ns;
 
     LEFT  <= std_logic_vector(to_signed(-128, 8));
     RIGHT <= std_logic_vector(to_signed(  -1, 8));
-    wait for 0 ns;  -- the necesity for this delta delay is probably a GHDL bug
-    wait for 0 ns;  -- in the first output line a single delta delay was not enough for GHDL to provide the right output
+    wait for 1 ns;
 
     report to_hstring(LEFT) & " + " & to_hstring(RIGHT) & " = " & to_hstring(C_OUT & RESULT) & ", V_OUT = " & std_logic'image(V_OUT);
-    wait for 10 ns;
+    wait for 9 ns;
     wait;
 
   end process TEST;
