@@ -23,5 +23,14 @@ We will discuss the following processor extensions in this chapter:
 
 [integer_division.cpp](src/integer_division.cpp) is an example of integer division in C++.
 
+On Linux the source code can be compiled using the command line:
+```Bash
+gcc integer_division.cpp -lstdc++
+```
+And the generated executable `a.out` can be run with:
+```Bash
+./a.out
+```
+
 # Answers to Exercises
 [Answers to Exercises](Answers%20to%20Exercises/README.md)
