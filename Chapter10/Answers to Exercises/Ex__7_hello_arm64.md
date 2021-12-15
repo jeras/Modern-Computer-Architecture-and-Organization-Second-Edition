@@ -71,3 +71,73 @@ AARCH64 GAS  Ex__7_hello_arm64.s 			page 1
   19      41726368 
   20              	msg_len = . - msg
 ```
+
+# Answer (Linux Ubuntu 20.04)
+
+First install dependencies like the GCC cross compiler for ARM (both 32-bit and 64-bit) and the QEMU emulator.
+```Bash
+sudo apt install gcc-arm-linux-gnueabihf libc6-dev-armhf-cross
+sudo apt install gcc-aarch64-linux-gnu libc6-dev-arm64-cross
+sudo apt install qemu-system-arm qemu-user qemu-user-static
+```
+
+Use the cross compiler to compile the source code into a binary.
+```Bash
+aarch64-linux-gnu-as -al=hello_arm64.lst -o hello_arm64.o hello_arm64.s
+aarch64-linux-gnu-ld -o hello_arm64 hello_arm64.o
+```
+To see the listing:
+```Bash
+$ cat hello_arm64.lst
+AARCH64 GAS  hello_arm64.s 			page 1
+
+
+   1              	.text
+   2              	.global _start
+   3              	
+   4              	_start:
+   5              	    // Print the message to file 1 (stdout) with syscall 64
+   6 0000 200080D2 	    mov     x0, #1
+   7 0004 E1000058 	    ldr     x1, =msg
+   8 0008 420380D2 	    mov     x2, #msg_len
+   9 000c 080880D2 	    mov     x8, #64
+  10 0010 010000D4 	    svc     0
+  11              	
+  12              	    // Exit the program with syscall 93, returning status 0
+  13 0014 000080D2 	    mov     x0, #0
+  14 0018 A80B80D2 	    mov     x8, #93
+  15 001c 010000D4 	    svc     0
+  16              	    
+  17              	.data
+  18              	msg:
+  19 0000 48656C6C 	    .ascii      "Hello, Computer Architect!"
+  19      6F2C2043 
+  19      6F6D7075 
+  19      74657220 
+  19      41726368 
+  20              	msg_len = . - msg
+```
+
+To execute the binary under QEMU:
+```Bash
+$ qemu-aarch64 -L /usr/aarch64-linux-gnu/ hello_arm64
+Hello, Computer Architect!
+```
+
+The QEMU emulator is able to execute ARM binaries on x64 Linux,
+while also emulating system calls,
+so there is no need for a full Linux OS compiled for ARM.
+
+```Bash
+$ aarch64-linux-gnu-as -o Ex__7_hello_arm64.o Ex__7_hello_arm64.s
+$ aarch64-linux-gnu-ld -o Ex__7_hello_arm64 Ex__7_hello_arm64.o
+$ qemu-aarch64 -L /usr/aarch64-linux-gnu/ Ex__7_hello_arm64
+Hello, Computer Architect!
+```
+
+```Bash
+$ aarch64-linux-gnu-as -o Ex__8_expr_arm64.o Ex__8_expr_arm64.s
+$ aarch64-linux-gnu-ld -o Ex__8_expr_arm64 Ex__8_expr_arm64.o
+$ qemu-aarch64 -L /usr/aarch64-linux-gnu/ Ex__8_expr_arm64
+[(129 - 66) * (445 + 136)] / 3 = 2FA9h
+```

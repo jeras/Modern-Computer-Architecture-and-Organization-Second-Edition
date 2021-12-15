@@ -74,3 +74,71 @@ ARM GAS  Ex__5_hello_arm.s 			page 1
   19      41726368 
   20              	msg_len = . - msg
 ```
+
+# Answer (Linux Ubuntu 20.04)
+
+First install dependencies like the GCC cross compiler for ARM (both 32-bit and 64-bit) and the QEMU emulator.
+```Bash
+sudo apt install gcc-arm-linux-gnueabihf libc6-dev-armhf-cross
+sudo apt install gcc-aarch64-linux-gnu libc6-dev-arm64-cross
+sudo apt install qemu-system-arm qemu-user qemu-user-static
+```
+
+Use the cross compiler to compile the source code into a binary.
+```Bash
+arm-linux-gnueabihf-as -al=hello_arm.lst -o hello_arm.o hello_arm.s
+arm-linux-gnueabihf-ld -o hello_arm hello_arm.o
+```
+To see the listing:
+```Bash
+$ cat hello_arm.lst
+ARM GAS  hello_arm.s 			page 1
+
+
+   1              	.text
+   2              	.global _start
+   3              	
+   4              	_start:
+   5 0000 0100A0E3 	    mov     r0, #1       // int fd 1 (stdout)
+   6 0004 14109FE5 	    ldr     r1, =message // const void *buf
+   7 0008 1A20A0E3 	    mov     r2, #count   // size_t count
+   8 000c 0470A0E3 	    mov     r7, #4       // syscall 4 (sys_write)
+   9 0010 000000EF 	    svc     0
+  10              	
+  11 0014 0000A0E3 	    mov     r0, #0       // int status (0=OK)
+  12 0018 0170A0E3 	    mov     r7, #1       // syscall 1 (sys_exit)
+  13 001c 000000EF 	    svc     0
+  14              	        
+  15              	.data
+  16              	message:
+  17 0000 48656C6C 	    .ascii      "Hello, Computer Architect!"
+  17      6F2C2043 
+  17      6F6D7075 
+  17      74657220 
+  17      41726368 
+  18              	count = . - message
+```
+
+To execute the binary under QEMU:
+```Bash
+$ qemu-arm -L /usr/arm-linux-gnueabihf/ hello_arm
+Hello, Computer Architect!
+```
+
+The QEMU emulator is able to execute ARM binaries on x64 Linux,
+while also emulating system calls,
+so there is no need for a full Linux OS compiled for ARM.
+
+```Bash
+$ arm-linux-gnueabihf-as -o Ex__5_hello_arm.o Ex__5_hello_arm.s
+$ arm-linux-gnueabihf-ld -o Ex__5_hello_arm Ex__5_hello_arm.o
+$ qemu-arm -L /usr/arm-linux-gnueabihf/ Ex__5_hello_arm
+Hello, Computer Architect!
+```
+
+```Bash
+$ arm-linux-gnueabihf-as -o Ex__6_expr_arm.o Ex__6_expr_arm.s
+$ arm-linux-gnueabihf-ld -o Ex__6_expr_arm Ex__6_expr_arm.o
+$ qemu-arm -L /usr/arm-linux-gnueabihf/ Ex__6_expr_arm
+[(129 - 66) * (445 + 136)] / 3 = 2FA9h
+```
